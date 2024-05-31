@@ -1,0 +1,27 @@
+.calculator-container {
+
+}
+
+.display {
+
+}
+
+.calculation {
+/* to keep track of calculation */
+}
+
+.input-output {
+/*  reactive to inputed values and displays answer on equals */
+}
+
+.reset-button {
+/* big button spans 3 spaces */
+}
+
+.number-button {
+/*  0 to span 2 spaces */
+}
+
+.operation-button {
+
+}
