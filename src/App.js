@@ -54,11 +54,11 @@ function App() {
 	return (
 		<div className="calculator-container">
 			<div className="display">
-				<div className="previous-calculation" data-testid="previous-calculation">
-					{previousCalculation}{operation}
+				<div data-testid="previous-calculation">
+					{previousCalculation}
 				</div>
-				<div className="current-calculation" data-testid="current-calculation">
-					{currentCalculation}
+				<div data-testid="current-calculation">
+					{currentCalculation}{operation}
 				</div>
 			</div>
 			<div className="keypad-wrapper">

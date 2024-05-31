@@ -3,46 +3,59 @@
 *::after {
 	box-sizing: border-box;
 }
+body {
+  background: linear-gradient(to right, #9e10c1, #ff00e1);
+}
 
 .calculator-container {
 	margin-top: 2rem;
-	max-width: 40%;
+	max-width: 60%;
 }
 
 .display {
+	border-radius: 10px 10px 0px 0px;
   min-height: 4rem;
-	grid-column: span 4;
-	background: red;
+	display: flex;
+	background: rgba(0, 0, 0, 0.592);
+	font-size: 2.5rem;
+	flex-direction: column;
+	align-items: flex-end;
+	justify-content: space-around;
+	word-break: break-all;
 }
 
-.calculation {
-	/* to keep track of calculation */
+.display div {
+	color: rgba(255,255,255, .75)
 }
 
-.input-output {
-	/*  reactive to inputed values and displays answer on equals */
-}
 
 .keypad-wrapper {
 	display: grid;
 	grid-template-columns: repeat(4, 1fr);
 	gap: 4px 4px;
 	grid-template-rows: repeat(5, 4rem);
-	background: orange;
+	padding: 10px 10px 10px 10px;
+	background: rgba(0, 0, 0, 0.214);
+	border-radius: 0px 0px 10px 10px ;
+
+}
+
+button {
+	background: rgba(139, 137, 137, 0.607);
+	border: none;
 }
 
 .keypad-button {
-	background: green;
+
 }
+
 
 .reset-button {
 	grid-column: span 3;
-	background: yellow;
 }
 
 .zero-button {
 	grid-column: span 2;
-	background: blue;
 }
 
 button {
