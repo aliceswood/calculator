@@ -1,27 +1,49 @@
-.calculator-container {
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
 
+.calculator-container {
+	margin-top: 2rem;
+	max-width: 25%;
 }
 
 .display {
-
+	grid-column: span 4;
+	background: red;
 }
 
 .calculation {
-/* to keep track of calculation */
+	/* to keep track of calculation */
 }
 
 .input-output {
-/*  reactive to inputed values and displays answer on equals */
+	/*  reactive to inputed values and displays answer on equals */
+}
+
+.keypad-wrapper {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: 4px 4px;
+	grid-template-rows: repeat(5);
+	background: orange;
+}
+
+.keypad-button {
+	background: green;
 }
 
 .reset-button {
-/* big button spans 3 spaces */
+	grid-column: span 3;
+	background: yellow;
 }
 
-.number-button {
-/*  0 to span 2 spaces */
+.zero-button {
+	grid-column: span 2;
+	background: blue;
 }
 
-.operation-button {
-
+button {
+	border-radius: 8px;
 }

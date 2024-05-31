@@ -2,35 +2,39 @@ import React from "react";
 import "./App.css";
 
 function App() {
+	const buttons = [
+    "AC", "÷",
+    7, 8, 9, "x", 
+    4, 5, 6, "-", 
+    1, 2, 3, "+", 
+    0, ".", "="
+  ];
 
-  const numberButtons = [
-    1, 2, 3, 4, 5, 6, 7, 8, 9, "."
-  ]
-
-  const operationKeys = [
-    "÷", "x", "-", "+", "="
-  ]
 	return (
 		<div className="calculator-container">
 			<div className="display">
-        <div className="calculation">
-        Placeholder for calculation
-        </div>
-        <div className="input-output">
-        Placeholder for input/output
-        </div>
-      </div>
-			<button className="reset-button">
-        AC
-      </button>
-      {numberButtons.map((number) => {
-        return (<button className="number-button">{number}</button>)
-      })}
-      {operationKeys.map((number) => {
-        return (<button className="operation-button">{number}</button>)
-      })}
+				<div className="calculation">Placeholder for calculation</div>
+				<div className="input-output">Placeholder for input/output</div>
+			</div>
+			<div className="keypad-wrapper">
+				{buttons.map((key) => {
+
+          const className = 
+            key === "AC" ? "reset-button"
+              : key === 0 ? "zero-button"
+              : "keypad-button"
+
+					return (
+						<button key={key} className={className}>
+							{key}
+						</button>
+					);
+				})}
+			</div>
 		</div>
 	);
 }
+
+
 
 export default App;
