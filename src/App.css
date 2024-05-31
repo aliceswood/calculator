@@ -6,10 +6,11 @@
 
 .calculator-container {
 	margin-top: 2rem;
-	max-width: 25%;
+	max-width: 40%;
 }
 
 .display {
+  min-height: 4rem;
 	grid-column: span 4;
 	background: red;
 }
@@ -26,7 +27,7 @@
 	display: grid;
 	grid-template-columns: repeat(4, 1fr);
 	gap: 4px 4px;
-	grid-template-rows: repeat(5);
+	grid-template-rows: repeat(5, 4rem);
 	background: orange;
 }
 
