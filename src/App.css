@@ -41,14 +41,17 @@ body {
 }
 
 button {
-	background: rgba(139, 137, 137, 0.607);
-	border: none;
+	background: rgba(255, 255, 255, 0.792);
+	border-color:rgb(80, 79, 79);
+	transition: background-color 0.3s ease, transform 0.1s ease; 
+  cursor: auto;
+	border-radius: 6px;
 }
 
-.keypad-button {
-
+button:active {
+	background: rgb(80, 79, 79);
+  transform: scale(0.98); 
 }
-
 
 .reset-button {
 	grid-column: span 3;
@@ -58,6 +61,3 @@ button {
 	grid-column: span 2;
 }
 
-button {
-	border-radius: 8px;
-}
