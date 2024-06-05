@@ -158,4 +158,17 @@ describe("Calculator", () => {
 
 		expect(currentCalculation).toHaveTextContent("2");
 	})
+
+	it('overwrites calculation after equals', () => {
+		render(<App />);
+		const currentCalculation = screen.getByTestId("current-calculation");
+
+		fireEvent.click(screen.getByText("1"));
+		fireEvent.click(screen.getByText("+"));
+		fireEvent.click(screen.getByText("2"));
+		fireEvent.click(screen.getByText("="));
+		fireEvent.click(screen.getByText("2"));
+
+		expect(currentCalculation).toHaveTextContent("2");
+	})
 });

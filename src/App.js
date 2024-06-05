@@ -26,6 +26,7 @@ function reducer(state, action) {
 				previousCalculation: "",
 				currentCalculation: evaluate(state),
 				operation: action.value,
+				overwrite: true,
 			};
 		}
 		case "choose-function": {
@@ -56,6 +57,14 @@ function reducer(state, action) {
 			};
 		}
 		case "add-digit": {
+			if( state.overwrite) {
+				return {
+					...state,
+					currentCalculation: action.value.toString(),
+					overwrite: false
+				}
+			}
+
 			if (action.value === 0 && state.currentCalculation === "0") {
 				return state;
 			}
@@ -94,8 +103,23 @@ function evaluate({ currentCalculation, previousCalculation, operation }) {
 			break;
 		}
 	}
+	const result = calculation.toString();
+	console.log(result, typeof result)
+	return result
+}
 
-	return calculation.toString();
+const NUMBER_FORMATER = new Intl.NumberFormat("en-uk", {
+	maximumFractionDigits: 0,
+})
+
+function formatNumber(number) {
+	console.log(typeof number)
+	if( number === "" || number == null ) return
+	if (!`${number}`.includes("."))return NUMBER_FORMATER.format(number)
+	const [integer, decimal] = number.split(".");
+	// trouble splitting if there is no .
+	if (decimal == null) return NUMBER_FORMATER.format(integer)
+	return `${NUMBER_FORMATER.format(integer)}.${decimal}`
 }
 
 function App() {
@@ -108,11 +132,11 @@ function App() {
 		<div className="calculator-container">
 			<div data-testid="display" className="display">
 				<div data-testid="previous-calculation" className="previous-calculation">
-					{previousCalculation}
+					{formatNumber(previousCalculation)}
 					{operation}
 				</div>
 				<div data-testid="current-calculation" className="current-calculation">
-					{currentCalculation}
+					{formatNumber(currentCalculation)}
 				</div>
 			</div>
 			<div className="keypad-wrapper">
