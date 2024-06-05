@@ -87,10 +87,27 @@ describe("Calculator", () => {
 	it("replaces the chosen function", () => {
 		render(<App />);
 
-		
+		const previousCalculation = screen.getByTestId("previous-calculation");
+
+		fireEvent.click(screen.getByText("1"));
+		fireEvent.click(screen.getByText("+"));
+		fireEvent.click(screen.getByText("*"));
+
+		expect(previousCalculation).toHaveTextContent("1*");
 	});
 
 	it("updates the previous calculation as user enters new function", () => {
 		render(<App />);
+
+		const previousCalculation = screen.getByTestId("previous-calculation");
+		const currentCalculation = screen.getByTestId("current-calculation");
+
+		fireEvent.click(screen.getByText("1"));
+		fireEvent.click(screen.getByText("+"));
+		fireEvent.click(screen.getByText("1"));
+		fireEvent.click(screen.getByText("+"));
+		fireEvent.click(screen.getByText("1"));
+
+		expect(previousCalculation).toHaveTextContent("2+");
 	});
 });
