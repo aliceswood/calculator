@@ -13,7 +13,7 @@ body {
 }
 
 .display {
-	border-radius: 10px 10px 0px 0px;
+	border-radius: 6px 6px 0px 0px;
   min-height: 4rem;
 	display: flex;
 	background: rgba(0, 0, 0, 0.592);
@@ -25,9 +25,15 @@ body {
 }
 
 .current-calculation {
+	padding-right: 10px;
 	color: rgba(255,255,255, .75)
 }
 
+.previous-calculation {
+	font-size: 0.8em;
+	color: rgba(120, 118, 118, 0.75);
+	padding-right: 20px;
+}
 
 .keypad-wrapper {
 	display: grid;
@@ -36,7 +42,7 @@ body {
 	grid-template-rows: repeat(5, 4rem);
 	padding: 10px 10px 10px 10px;
 	background: rgba(0, 0, 0, 0.214);
-	border-radius: 0px 0px 10px 10px ;
+	border-radius: 0px 0px 6px 6px ;
 
 }
 
@@ -60,9 +66,4 @@ button:active {
 
 .zero-button {
 	grid-column: span 2;
-}
-
-.previous-calculation {
-	font-size: 0.8em;
-	color: rgba(120, 118, 118, 0.75);
 }
