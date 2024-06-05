@@ -19,9 +19,13 @@ function reducer(state, action) {
 			// edge case: switch out selected function
 		}
 		case "add-digit": {
-			if(action.value === 0 && state.currentCalculation === "0") return state
-			if(action.value === "." && state.currentCalculation.includes(".")) return state
-			
+			if(action.value === 0 && state.currentCalculation === "0") {
+				return state
+			}
+			if(action.value === "." && state.currentCalculation.includes(".")) { 
+				return state
+			}
+
 			return {
 				...state,
 				currentCalculation: `${state.currentCalculation || ""}${action.value}`,
@@ -33,6 +37,7 @@ function reducer(state, action) {
 function App() {
 	const [state, dispatch] = useReducer(reducer, INITIAL_STATE);
 	const { previousCalculation, currentCalculation, operation } = state;
+
 	const buttons = [
 		"AC", "÷", 
 		7, 8, 9, "x", 
@@ -42,7 +47,7 @@ function App() {
 
 	return (
 		<div className="calculator-container">
-			<div className="display">
+			<div data-testid="display" className="display">
 				<div data-testid="previous-calculation">{previousCalculation}</div>
 				<div data-testid="current-calculation">
 					{currentCalculation}

@@ -34,6 +34,36 @@ describe("Calculator", () => {
 		expect(display).toHaveTextContent("123");
 	})
 
+	it('limits the number of 0s at the start of the number', () => {
+		render(<App />);
+		const display = screen.getByTestId("display");
+		const zeroButton = screen.getByText("0")
+
+		fireEvent.click(zeroButton);
+		fireEvent.click(zeroButton);
+		fireEvent.click(zeroButton);
+		
+
+		expect(display.textContent).toBe("0");
+	})
+
+	it('limits the number of . in one line', () => {
+		render(<App />);
+		const currentCalculation = screen.getByTestId('current-calculation');
+
+		fireEvent.click(screen.getByText('1'));
+		fireEvent.click(screen.getByText('.'));
+		fireEvent.click(screen.getByText('.'));
+		fireEvent.click(screen.getByText('1'));		
+		fireEvent.click(screen.getByText('1'));
+		fireEvent.click(screen.getByText('1'));
+		fireEvent.click(screen.getByText('.'));
+
+		const displayText = currentCalculation.textContent;
+		const periodCount = displayText.split('.').length - 1;
+	
+		expect(periodCount).toBe(1)
+	})
 
 	it('clears the display', () => {
 		render(<App />);
