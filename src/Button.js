@@ -5,7 +5,7 @@ function handleButtonClick(value, dispatch) {
 		dispatch({ type: "clear" });
 	} else if (value === "=") {
 		dispatch({ type: "equals" });
-	} else if (value === "÷" || value === "x" || value === "-" || value === "+") {
+	} else if (value === "÷" || value === "*" || value === "-" || value === "+") {
 		dispatch({ type: "choose-function", value: value });
 	} else {
 		dispatch({ type: "add-digit", value: value });
