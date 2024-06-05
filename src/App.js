@@ -16,8 +16,12 @@ function reducer(state, action) {
 		case "equals": {
 		}
 		case "choose-function": {
+			// edge case: switch out selected function
 		}
 		case "add-digit": {
+			// edge case: starts with a 0
+			// edge case: limit .
+			
 			return {
 				...state,
 				currentCalculation: `${state.currentCalculation || ""}${action.payload}`,
