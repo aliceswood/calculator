@@ -110,4 +110,52 @@ describe("Calculator", () => {
 
 		expect(previousCalculation).toHaveTextContent("2+");
 	});
+
+	it('adds correctly', () => {
+		render(<App />);
+		const currentCalculation = screen.getByTestId("current-calculation");
+
+		fireEvent.click(screen.getByText("1"));
+		fireEvent.click(screen.getByText("+"));
+		fireEvent.click(screen.getByText("1"));
+		fireEvent.click(screen.getByText("="));
+
+		expect(currentCalculation).toHaveTextContent("2");
+	})
+
+	it('subtracts correctly', () => {
+		render(<App />);
+		const currentCalculation = screen.getByTestId("current-calculation");
+
+		fireEvent.click(screen.getByText("2"));
+		fireEvent.click(screen.getByText("-"));
+		fireEvent.click(screen.getByText("1"));
+		fireEvent.click(screen.getByText("="));
+
+		expect(currentCalculation).toHaveTextContent("1");
+	})
+
+	it('multiplies correctly', () => {
+		render(<App />);
+		const currentCalculation = screen.getByTestId("current-calculation");
+
+		fireEvent.click(screen.getByText("2"));
+		fireEvent.click(screen.getByText("*"));
+		fireEvent.click(screen.getByText("2"));
+		fireEvent.click(screen.getByText("="));
+
+		expect(currentCalculation).toHaveTextContent("4");
+	})
+
+	it('divides correctly', () => {
+		render(<App />);
+		const currentCalculation = screen.getByTestId("current-calculation");
+
+		fireEvent.click(screen.getByText("4"));
+		fireEvent.click(screen.getByText("÷"));
+		fireEvent.click(screen.getByText("2"));
+		fireEvent.click(screen.getByText("="));
+
+		expect(currentCalculation).toHaveTextContent("2");
+	})
 });

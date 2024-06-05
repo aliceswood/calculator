@@ -14,6 +14,12 @@ function reducer(state, action) {
 			return INITIAL_STATE;
 		}
 		case "equals": {
+			return {
+				...state,
+				previousCalculation: "",
+				currentCalculation: evaluate(state),
+				operation: action.value,
+			};
 		}
 		case "choose-function": {
 			if (state.currentCalculation === "" && state.previousCalculation === "") {
