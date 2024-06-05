@@ -6,9 +6,9 @@ function handleButtonClick(value, dispatch) {
 	} else if (value === "=") {
 		dispatch({ type: "equals" });
 	} else if (value === "÷" || value === "x" || value === "-" || value === "+") {
-		dispatch({ type: "choose-function", payload: value });
+		dispatch({ type: "choose-function", value: value });
 	} else {
-		dispatch({ type: "add-digit", payload: value });
+		dispatch({ type: "add-digit", value: value });
 	}
 }
 

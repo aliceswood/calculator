@@ -19,12 +19,12 @@ function reducer(state, action) {
 			// edge case: switch out selected function
 		}
 		case "add-digit": {
-			// edge case: starts with a 0
-			// edge case: limit .
+			if(action.value === 0 && state.currentCalculation === "0") return state
+			if(action.value === "." && state.currentCalculation.includes(".")) return state
 			
 			return {
 				...state,
-				currentCalculation: `${state.currentCalculation || ""}${action.payload}`,
+				currentCalculation: `${state.currentCalculation || ""}${action.value}`,
 			};
 		}
 	}
