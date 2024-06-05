@@ -1,5 +1,6 @@
 import React, { useReducer } from "react";
 import "./App.css";
+import Button from "./Button";
 
 const INITIAL_STATE = {
 	previousCalculation: "",
@@ -10,65 +11,53 @@ const INITIAL_STATE = {
 function reducer(state, action) {
 	switch (action.type) {
 		case "clear": {
-			return INITIAL_STATE
+			return INITIAL_STATE;
 		}
 		case "equals": {
 		}
 		case "choose-function": {
 		}
 		case "add-digit": {
-			return 	{
+			return {
 				...state,
-				currentCalculation: `${state.currentCalculation}${action.payload}`,
-			}	}
+				currentCalculation: `${state.currentCalculation || ""}${action.payload}`,
+			};
+		}
 	}
 }
 
 function App() {
 	const [state, dispatch] = useReducer(reducer, INITIAL_STATE);
-
-	const { previousCalculation, currentCalculation, operation } = state
-
-
-
+	const { previousCalculation, currentCalculation, operation } = state;
 	const buttons = [
-		"AC", "÷",
+		"AC", "÷", 
 		7, 8, 9, "x", 
 		4, 5, 6, "-", 
 		1, 2, 3, "+", 
-		0, ".", "="
-	];
-
-	function handleButtonClick(key) {
-		if (key === "AC") {
-			dispatch({ type: "clear" });
-		} else if (key === "=") {
-			dispatch({ type: "equals" });
-		} else if (key === "÷" || key === "x" || key === "-" || key === "+") {
-			dispatch({ type: "choose-function", payload: key });
-		} else {
-			dispatch({ type: "add-digit", payload: key });
-		}
-	}
+		0, ".", "="];
 
 	return (
 		<div className="calculator-container">
 			<div className="display">
-				<div data-testid="previous-calculation">
-					{previousCalculation}
-				</div>
+				<div data-testid="previous-calculation">{previousCalculation}</div>
 				<div data-testid="current-calculation">
-					{currentCalculation}{operation}
+					{currentCalculation}
+					{operation}
 				</div>
 			</div>
 			<div className="keypad-wrapper">
-				{buttons.map((key) => {
+				{buttons.map((value) => {
 					const className =
-						key === "AC" ? "reset-button" : key === 0 ? "zero-button" : "keypad-button";
+						value === "AC" ? "reset-button" : value === 0 ? "zero-button" : "keypad-button";
 					return (
-						<button key={key} className={className} onClick={() => {handleButtonClick(key)}}>
-							{key}
-						</button>
+						<Button 
+							key={value}
+							dispatch={dispatch} 
+							value={value} 
+							className={className}
+						>
+							{value}
+						</Button>
 					);
 				})}
 			</div>
