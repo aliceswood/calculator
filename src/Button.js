@@ -1,26 +1,24 @@
-// import "./App.css";
-
-function handleButtonClick(value, dispatch) {
-	if (value === "AC") {
+function handleButtonClick(buttonValue, dispatch) {
+	if (buttonValue === "AC") {
 		dispatch({ type: "clear" });
-	} else if (value === "=") {
+	} else if (buttonValue === "=") {
 		dispatch({ type: "equals" });
-	} else if (value === "÷" || value === "*" || value === "-" || value === "+") {
-		dispatch({ type: "choose-function", value: value });
+	} else if (buttonValue === "÷" || buttonValue === "*" || buttonValue === "-" || buttonValue === "+") {
+		dispatch({ type: "choose-function", value: buttonValue });
 	} else {
-		dispatch({ type: "add-digit", value: value });
+		dispatch({ type: "add-digit", value: buttonValue });
 	}
 }
 
-function Button({ dispatch, value, className}) {
+function Button({ dispatch, buttonValue, className}) {
 	return (
 		<button
       className={className}
 			onClick={() => 
-				handleButtonClick(value, dispatch)
+				handleButtonClick(buttonValue, dispatch)
 			}
 		>
-			{value}
+			{buttonValue}
 		</button>
 	);
 }
